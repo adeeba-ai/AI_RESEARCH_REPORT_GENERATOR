@@ -1,3 +1,7 @@
 crewai
 crewai_tools
 streamlit
+reportlab
+python-docx
+edge-tts
+google-search-results
