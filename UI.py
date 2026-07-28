@@ -194,6 +194,13 @@ if run_button:
             env["PYTHONIOENCODING"] = "utf-8"
             env["PYTHONUTF8"] = "1"
             env["OTEL_SDK_DISABLED"] = "true"
+            
+            # Sync API Keys to prevent conflicts where LiteLLM picks an invalid GOOGLE_API_KEY
+            if "GEMINI_API_KEY" in env:
+                env["GOOGLE_API_KEY"] = env["GEMINI_API_KEY"]
+            elif "GOOGLE_API_KEY" in env:
+                env["GEMINI_API_KEY"] = env["GOOGLE_API_KEY"]
+
 
             process = subprocess.Popen(
                 [python_exe, "crew.py", selected_topic],
