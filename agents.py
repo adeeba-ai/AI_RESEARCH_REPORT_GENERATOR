@@ -24,7 +24,7 @@ resarcher= Agent(
     ),
     llm=llm,
     tools=[google_tool],
-    max_iter=3,
+    max_iter=15,
     allow_delegation=False
 )
 
@@ -86,7 +86,7 @@ citation= Agent(
     ),
     llm=llm,
     tools=[google_tool],
-    max_iter=3,
+    max_iter=15,
     allow_delegation=False
 )
 
@@ -102,7 +102,7 @@ fact_checker= Agent(
     ),
     llm=llm,
     tools=[google_tool],
-    max_iter=3,
+    max_iter=15,
     allow_delegation=False
 )
 
