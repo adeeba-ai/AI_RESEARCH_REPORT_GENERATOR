@@ -1,6 +1,6 @@
 from crewai import Task
 from  tools import google_tool
-from agents import resarcher,summarizer,writer,reviewer,citation,fact_checker
+from agents import resarcher,summarizer,writer,citation
 
 research_task= Task(
     description=(
@@ -72,26 +72,7 @@ writer_task= Task(
     context=[summary_task]
 )
 
-reviewer_task= Task(
-    description=(
-        "Review the generated research report. "
 
-        "Correct grammar, spelling, formatting and sentence structure. "
-
-        "Improve readability while preserving the original meaning. "
-
-        "Ensure every section is properly formatted and academically professional."
-    
-        "Do NOT remove or rewrite the report, only correct the errors if any. "
-    ),
-
-    expected_output=(
-        "A final polished research report ready for PDF and DOCX generation."
-    ),
-
-    agent=reviewer,
-    context=[writer_task]
-)
 
 citation_task= Task(
     description=(
@@ -114,24 +95,8 @@ citation_task= Task(
     
     tools=[google_tool],
     agent=citation,
-    context=[reviewer_task]
+    context=[writer_task]
 )
 
-fact_checker_task= Task(
-    description=(
-        "Review the complete research report including the references. "
-        "Verify factual accuracy using Google Search. "
-        "Correct only incorrect facts. "
-        "Do NOT shorten, summarize, or remove any section of the report. "
-        "Preserve all headings, formatting, and references."
-    ),
 
-    expected_output=(
-        "The complete verified research report with all sections and references preserved."
-    ),
-
-    tools=[google_tool],
-    agent=fact_checker,
-    context=[citation_task]
-)
 

@@ -1,27 +1,23 @@
 from crewai import Crew, Process
-from agents import resarcher, summarizer, writer, reviewer, citation, fact_checker
+from agents import resarcher, summarizer, writer, citation
 from task import (
     research_task,
     summary_task,
     writer_task,
-    reviewer_task,
     citation_task,
-    fact_checker_task,
 )
 from pdf_and_docx import generate_pdf, generate_docx
 from podcast_generator import create_podcast
 import os
-
+ 
 crew = Crew(
-    agents=[resarcher, summarizer, writer, reviewer, citation, fact_checker],
-    tasks=[
-        research_task,
-        summary_task,
-        writer_task,
-        reviewer_task,
-        citation_task,
-        fact_checker_task,
-    ],
+        agents=[resarcher, summarizer, writer, citation],
+        tasks=[
+            research_task,
+            summary_task,
+            writer_task,
+            citation_task,
+        ],
     process=Process.sequential,
     memory=True,
     cache=True,

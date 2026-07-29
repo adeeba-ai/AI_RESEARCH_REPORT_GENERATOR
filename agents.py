@@ -59,20 +59,7 @@ writer= Agent(
     allow_delegation=False
 )
 
-reviewer= Agent(
-    role="Senior Academic Reviewer and Quality Analyst",
-    goal="Review the generated research report for grammar, clarity, formatting, consistency and overall academic quality.",
-    verbose=True,
-    memory=False,
-    backstory=(
-        "You are a university professor and academic reviewer with years "
-        "of experience evaluating research papers. You improve grammar, "
-        "readability, formatting and presentation while preserving the "
-        "original meaning and technical correctness."
-    ),
-    llm=llm,
-    allow_delegation=False
-)
+
 
 citation= Agent(
     role="Citation and Reference Specialist",
@@ -90,19 +77,5 @@ citation= Agent(
     allow_delegation=False
 )
 
-fact_checker= Agent(
-    role="Research Fact Verification Sprcialist",
-    goal="Verify every information claim using reliable online sources before the report is finalized.",
-    verbose=True,
-    memory=False,
-    backstory=(
-        "You are an expert fact-checker who validates research findings "
-        "using trusted sources, ensuring that all information is accurate, "
-        "consistent and up to date."
-    ),
-    llm=llm,
-    tools=[google_tool],
-    max_iter=15,
-    allow_delegation=False
-)
+
 
