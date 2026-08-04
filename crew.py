@@ -19,7 +19,7 @@ crew = Crew(
             citation_task,
         ],
     process=Process.sequential,
-    memory=True,
+    memory=False,
     cache=True,
     max_rpm=12,
     share_crew=True,
